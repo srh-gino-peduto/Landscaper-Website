@@ -25,13 +25,12 @@ body{
 }
 
 /* ===== Header ===== */
-.header{
+.header {
   position: absolute;
-  top: 38px;
-  left: 70px;     /* Abstand zum linken Bildrand wie Vorlage */
-  right: 70px;    /* Abstand zum rechten Bildrand wie Vorlage */
+  top: 38px;   /* vorher 38px */
+  left: 70px;
+  right: 70px;
   z-index: 10;
-  padding-top: 0;
 }
 
 
@@ -78,7 +77,7 @@ body{
 
 .brand__name{
   display: block;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.5px;
   color: var(--dark);
   font-size: 18px;
@@ -116,12 +115,13 @@ body{
 
 /* ===== Hero ===== */
 .hero{
-  height: 560px;
+  height: 460px; /* vorher 560px -> schneidet unten mehr weg (Hose) */
   background-image: url("images/teaser-background.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center 20%; /* Fokus nach oben -> mehr Oberkörper */
   position: relative;
 }
+
 
 .hero::before{
   content: "";
@@ -149,12 +149,14 @@ body{
   margin-bottom: 12px;
 }
 
-.hero__title{
-  color: #ffffff;
+.hero__title {
   font-size: 64px;
-  font-weight: 800;
-  margin-bottom: 26px;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  font-weight: 300;
 }
+
 
 .hero__actions{
   display: flex;
