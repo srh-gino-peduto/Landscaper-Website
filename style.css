@@ -20,26 +20,43 @@ body{
   width: var(--page-w);
   max-width: 100%;
   margin: 0 auto;
-  min-height: 970px; /* Vorgabe – responsive bleibt trotzdem ok */
+  min-height: 970px;
+  position: relative;
 }
 
 /* ===== Header ===== */
 .header{
-  padding-top: 38px; /* damit Header optisch "im Bild" sitzt */
+  position: absolute;
+  top: 38px;
+  left: 70px;     /* Abstand zum linken Bildrand wie Vorlage */
+  right: 70px;    /* Abstand zum rechten Bildrand wie Vorlage */
+  z-index: 10;
+  padding-top: 0;
 }
+
 
 .header__inner{
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 380px 1fr;
   align-items: stretch;
 }
+
+@media (max-width: 600px){
+  .header{
+    position: static;
+    left: auto;
+    right: auto;
+  }
+}
+
+
 
 /* links: Brand-Block (weiß) */
 .brand{
   display: flex;
   gap: 14px;
   align-items: center;
-  padding: 18px 18px;
+  padding: 18px 12px;
   background: #ffffff;
   text-decoration: none;
   border: 1px solid #efefef;
@@ -59,7 +76,6 @@ body{
   border: 3px solid var(--green);
 }
 
-/* Text wie im Mockup: groß + klein */
 .brand__name{
   display: block;
   font-weight: 700;
@@ -75,7 +91,7 @@ body{
   margin-top: 2px;
 }
 
-/* rechts: grüne Navigation */
+/* Navigation */
 .nav{
   background: var(--green);
   display: flex;
@@ -86,7 +102,7 @@ body{
 .nav__list{
   list-style: none;
   display: flex;
-  gap: 70px; /* große Abstände wie im Bild */
+  gap: 70px;
   padding: 0 30px;
 }
 
@@ -98,26 +114,15 @@ body{
   display: inline-block;
 }
 
-.nav__link:hover{
-  text-decoration: underline;
-}
-
-.nav__link.is-active{
-  font-weight: 700;
-}
-
 /* ===== Hero ===== */
 .hero{
-  margin-top: 0;
   height: 560px;
   background-image: url("images/teaser-background.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
-  overflow: hidden;
 }
 
-/* damit Text sauber lesbar bleibt, aber Bildcharakter erhalten bleibt */
 .hero::before{
   content: "";
   position: absolute;
@@ -141,16 +146,13 @@ body{
   background: rgba(255,255,255,0.85);
   color: var(--green);
   font-size: 26px;
-  letter-spacing: 0.2px;
   margin-bottom: 12px;
 }
 
 .hero__title{
   color: #ffffff;
   font-size: 64px;
-  letter-spacing: 1px;
   font-weight: 800;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
   margin-bottom: 26px;
 }
 
@@ -158,18 +160,14 @@ body{
   display: flex;
   gap: 70px;
   justify-content: center;
-  align-items: center;
 }
 
-/* Buttons wie im Bild: große Rechtecke */
 .btn{
-  display: inline-block;
   min-width: 140px;
-  text-align: center;
   padding: 18px 26px;
   font-size: 22px;
   text-decoration: none;
-  color: #ffffff;
+  color: #fff;
 }
 
 .btn--green{ background: var(--green); }
@@ -177,7 +175,6 @@ body{
 
 /* ===== Inhalt ===== */
 .section{
-  background: #ffffff;
   padding: 34px 0 40px;
 }
 
@@ -185,56 +182,29 @@ body{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 46px;
-  align-items: center;
   padding: 0 24px;
 }
 
-/* linke Box mit grauem Rahmen */
 .info{
   border: 2px solid var(--line);
-  padding: 26px 24px 22px;
-  background: #ffffff;
+  padding: 26px 24px;
 }
 
-.info__title{
-  margin-bottom: 16px;
-  font-weight: 400;
-  line-height: 1.05;
-}
-
-.info__titleTop{
-  display: block;
-  font-size: 34px;
-  color: var(--dark);
-}
-
-.info__titleBottom{
-  display: block;
-  font-size: 34px;
-  color: var(--green);
-}
+.info__titleTop{ font-size: 34px; color: var(--dark); }
+.info__titleBottom{ font-size: 34px; color: var(--green); }
 
 .info__p{
   color: #9a9a9a;
   font-size: 14px;
-  line-height: 1.75;
-  max-width: 42ch;
+  line-height: 1.7;
   margin-bottom: 26px;
 }
 
-.info__link{
-  color: var(--green);
-  text-decoration: none;
-  letter-spacing: 0.4px;
-}
-.info__link:hover{ text-decoration: underline; }
+.info__link{ color: var(--green); }
 
-/* rechtes Bild */
 .shot img{
   width: 100%;
-  height: auto;
   display: block;
-  border: 0;
 }
 
 /* ===== Footer ===== */
@@ -246,33 +216,29 @@ body{
 .footer__inner{
   display: flex;
   gap: 38px;
-  align-items: center;
   padding: 0 24px;
 }
 
 .footer__link{
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 0.6px;
 }
-.footer__link:hover{ text-decoration: underline; }
 
-/* ===== Responsive (Vorgabe: ab 600px Bilder untereinander) ===== */
+/* ===== Responsive ===== */
 @media (max-width: 600px){
-  .header__inner{
-    grid-template-columns: 1fr;
+
+  .header{
+    position: static;
   }
 
-  .brand{
-    justify-content: center;
+  .header__inner{
+    grid-template-columns: 1fr;
   }
 
   .nav__list{
     gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 8px 16px;
   }
 
   .hero{
@@ -283,16 +249,11 @@ body{
     font-size: 44px;
   }
 
-  .hero__kicker{
-    font-size: 20px;
-  }
-
   .hero__actions{
     flex-direction: column;
     gap: 16px;
   }
 
-  /* Punkt 4: Bilder aus Punkt 3 untereinander */
   .section__inner{
     grid-template-columns: 1fr;
   }
