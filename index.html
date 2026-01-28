@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Landscaper - Landschaftsgartenbau</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Landscaper</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <!-- Header (10 Punkte) -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo.jpeg" alt="The Landscaper Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header__inner">
+        <!-- links: Logo-Block (weiß) -->
+        <a class="brand" href="#home" aria-label="The Landscaper Startseite">
+          <span class="brand__icon" aria-hidden="true"></span>
+          <span class="brand__text">
+            <span class="brand__name">THE LANDSCAPER</span>
+            <span class="brand__sub">Landscaping WordPress Theme</span>
+          </span>
+        </a>
+
+        <!-- rechts: Menü (grün) -->
+        <nav class="nav" aria-label="Hauptnavigation">
+          <ul class="nav__list">
+            <li><a class="nav__link is-active" href="#home">Home</a></li>
+            <li><a class="nav__link" href="#about">Über uns</a></li>
+            <li><a class="nav__link" href="#service">Service</a></li>
+            <li><a class="nav__link" href="#galleries">Galleries</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <!-- Teaserimage mit Text und Buttons (10 Punkte) -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Professioneller Landschaftsgartenbau</h2>
-            <p>Wir gestalten Ihren Traumgarten - von der Planung bis zur Umsetzung</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Kontakt aufnehmen</button>
-                <button class="btn btn-secondary">Unsere Projekte</button>
-            </div>
-        </div>
-    </section>
+    <!-- HERO -->
+    <main id="home">
+      <section class="hero" aria-label="Teaser">
+        <div class="hero__content">
+          <span class="hero__kicker">Wir machen Ihren Garten</span>
+          <h1 class="hero__title">THE LANDSCAPER</h1>
 
-    <!-- Schriftbox mit Link (links) und Bild (rechts) (15 Punkte) -->
-    <section class="content-section">
-        <div class="container">
-            <div class="content-wrapper">
-                <div class="text-box">
-                    <h3>Unsere Leistungen</h3>
-                    <p>
-                        Seit über 20 Jahren sind wir Ihr zuverlässiger Partner 
-                        für professionellen Landschaftsgartenbau. Von der ersten 
-                        Idee bis zur fertigen Gartenanlage begleiten wir Sie 
-                        durch alle Planungs- und Bauphasen.
-                    </p>
-                    <p>
-                        Unsere erfahrenen Gärtner und Landschaftsarchitekten 
-                        verwirklichen Ihre Vorstellungen mit höchster Präzision 
-                        und Qualität. Dabei setzen wir auf nachhaltige Materialien 
-                        und umweltfreundliche Methoden.
-                    </p>
-                    <a href="#services" class="text-link">Mehr erfahren →</a>
-                </div>
-                <div class="image-box">
-                    <img src="images/garden-showcase.jpg" alt="Schöner Garten">
-                </div>
-            </div>
+          <div class="hero__actions">
+            <a class="btn btn--green" href="#home">Home</a>
+            <a class="btn btn--dark" href="#contact">Kontakt</a>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Footer (10 Punkte) -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <p>&copy; 2023 The Landscaper. Alle Rechte vorbehalten.</p>
-                </div>
-                <div class="footer-contact">
-                    <p>Kontakt: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="771e19111837031f121b161913041416071205591312">[email&#160;p
+      <!-- CONTENT (2 Spalten) -->
+      <section class="section" id="service">
+        <div class="section__inner">
+          <!-- links: Textbox -->
+          <article class="info">
+            <h2 class="info__title">
+              <span class="info__titleTop">Exceptional</span>
+              <span class="info__titleBottom">Services We Offer</span>
+            </h2>
+
+            <p class="info__p">
+              We provide exceptional landscaping services to a wide range of
+              commercial and residential properties for over 35 years, including large
+              corporate environments, city parks, shopping malls and apartments.
+            </p>
+
+            <a class="info__link" href="#service">SEE MORE &gt;&gt;</a>
+          </article>
+
+          <!-- rechts: Bild -->
+          <figure class="shot">
+            <img src="images/garden-showcase.jpg" alt="Gärtner bei der Arbeit im Garten" />
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <a class="footer__link" href="#impressum">IMPRESSUM</a>
+        <a class="footer__link" href="#agb">AGB</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

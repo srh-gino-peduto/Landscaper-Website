@@ -1,264 +1,299 @@
-/* ===== ALLGEMEINE STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== Reset / Basis ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root{
+  --green: #9dbb45;     /* helles Grün (frei wählbar) */
+  --dark:  #4a4a4a;     /* dunkles Grau (frei wählbar) */
+  --text:  #2f2f2f;
+  --muted: #7a7a7a;
+  --line:  #d9d9d9;
+  --page-w: 1108px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    color: #333;
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #ffffff;
 }
 
-.container {
-    max-width: 1108px;
-    margin: 0 auto;
-    padding: 0 20px;
+.page{
+  width: var(--page-w);
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 970px; /* Vorgabe – responsive bleibt trotzdem ok */
 }
 
-/* ===== HEADER (10 Punkte) ===== */
-header {
-    background-color: #2d2d2d; /* Dunkles Grau */
-    color: white;
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* ===== Header ===== */
+.header{
+  padding-top: 38px; /* damit Header optisch "im Bild" sitzt */
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header__inner{
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  align-items: stretch;
 }
 
-header .logo img {
-    height: 40px;
-    width: auto;
+/* links: Brand-Block (weiß) */
+.brand{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 18px;
+  background: #ffffff;
+  text-decoration: none;
+  border: 1px solid #efefef;
 }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+.brand__icon{
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--line);
+  position: relative;
+}
+.brand__icon::after{
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--green);
 }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s;
+/* Text wie im Mockup: groß + klein */
+.brand__name{
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--dark);
+  font-size: 18px;
+  line-height: 1.1;
+}
+.brand__sub{
+  display: block;
+  color: #9c9c9c;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
-header nav ul li a:hover {
-    color: #7bc96f;
+/* rechts: grüne Navigation */
+.nav{
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== HERO SECTION - Teaserimage (10 Punkte) ===== */
-.hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                      url('images/teaser-background.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    display: flex;
-    align-items: center;
+.nav__list{
+  list-style: none;
+  display: flex;
+  gap: 70px; /* große Abstände wie im Bild */
+  padding: 0 30px;
+}
+
+.nav__link{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 18px 6px;
+  display: inline-block;
+}
+
+.nav__link:hover{
+  text-decoration: underline;
+}
+
+.nav__link.is-active{
+  font-weight: 700;
+}
+
+/* ===== Hero ===== */
+.hero{
+  margin-top: 0;
+  height: 560px;
+  background-image: url("images/teaser-background.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* damit Text sauber lesbar bleibt, aber Bildcharakter erhalten bleibt */
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.18);
+}
+
+.hero__content{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -38%);
+  text-align: center;
+  width: min(900px, 92%);
+  z-index: 1;
+}
+
+.hero__kicker{
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.85);
+  color: var(--green);
+  font-size: 26px;
+  letter-spacing: 0.2px;
+  margin-bottom: 12px;
+}
+
+.hero__title{
+  color: #ffffff;
+  font-size: 64px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  margin-bottom: 26px;
+}
+
+.hero__actions{
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Buttons wie im Bild: große Rechtecke */
+.btn{
+  display: inline-block;
+  min-width: 140px;
+  text-align: center;
+  padding: 18px 26px;
+  font-size: 22px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.btn--green{ background: var(--green); }
+.btn--dark{ background: var(--dark); }
+
+/* ===== Inhalt ===== */
+.section{
+  background: #ffffff;
+  padding: 34px 0 40px;
+}
+
+.section__inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 46px;
+  align-items: center;
+  padding: 0 24px;
+}
+
+/* linke Box mit grauem Rahmen */
+.info{
+  border: 2px solid var(--line);
+  padding: 26px 24px 22px;
+  background: #ffffff;
+}
+
+.info__title{
+  margin-bottom: 16px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.info__titleTop{
+  display: block;
+  font-size: 34px;
+  color: var(--dark);
+}
+
+.info__titleBottom{
+  display: block;
+  font-size: 34px;
+  color: var(--green);
+}
+
+.info__p{
+  color: #9a9a9a;
+  font-size: 14px;
+  line-height: 1.75;
+  max-width: 42ch;
+  margin-bottom: 26px;
+}
+
+.info__link{
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 0.4px;
+}
+.info__link:hover{ text-decoration: underline; }
+
+/* rechtes Bild */
+.shot img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 0;
+}
+
+/* ===== Footer ===== */
+.footer{
+  background: var(--green);
+  padding: 18px 0;
+}
+
+.footer__inner{
+  display: flex;
+  gap: 38px;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.footer__link{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+.footer__link:hover{ text-decoration: underline; }
+
+/* ===== Responsive (Vorgabe: ab 600px Bilder untereinander) ===== */
+@media (max-width: 600px){
+  .header__inner{
+    grid-template-columns: 1fr;
+  }
+
+  .brand{
     justify-content: center;
-    text-align: center;
-    color: white;
-}
+  }
 
-.hero-content h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+  .nav__list{
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 16px;
+  }
 
-.hero-content p {
+  .hero{
+    height: 460px;
+  }
+
+  .hero__title{
+    font-size: 44px;
+  }
+
+  .hero__kicker{
     font-size: 20px;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
+  }
 
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
+  .hero__actions{
+    flex-direction: column;
+    gap: 16px;
+  }
 
-.btn {
-    padding: 15px 30px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: bold;
-}
-
-.btn-primary {
-    background-color: #7bc96f; /* Heller Grünton */
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #6ab55f;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: white;
-    border: 2px solid white;
-}
-
-.btn-secondary:hover {
-    background-color: white;
-    color: #2d2d2d;
-}
-
-/* ===== CONTENT SECTION - Schriftbox und Bild (15 Punkte) ===== */
-.content-section {
-    padding: 80px 0;
-    background-color: #f5f5f5;
-}
-
-.content-wrapper {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
-
-.text-box {
-    flex: 1;
-    padding: 30px;
-    background-color: white;
-    border-left: 5px solid #7bc96f;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.text-box h3 {
-    font-size: 32px;
-    color: #2d2d2d;
-    margin-bottom: 20px;
-}
-
-.text-box p {
-    margin-bottom: 15px;
-    color: #555;
-    font-size: 16px;
-}
-
-.text-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: #7bc96f;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    transition: color 0.3s;
-}
-
-.text-link:hover {
-    color: #6ab55f;
-}
-
-.image-box {
-    flex: 1;
-}
-
-.image-box img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* ===== FOOTER (10 Punkte) ===== */
-footer {
-    background-color: #2d2d2d;
-    color: white;
-    padding: 30px 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-info p,
-.footer-contact p {
-    font-size: 14px;
-}
-
-.footer-contact a {
-    color: #7bc96f;
-    text-decoration: none;
-}
-
-/* ===== RESPONSIVE DESIGN (10 Punkte) ===== */
-/* Ab 600px: Bilder untereinander anzeigen */
-@media (max-width: 600px) {
-    /* Header responsive */
-    header .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    header nav ul {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 15px;
-    }
-    
-    /* Hero responsive */
-    .hero {
-        height: 400px;
-    }
-    
-    .hero-content h2 {
-        font-size: 32px;
-    }
-    
-    .hero-content p {
-        font-size: 16px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-    }
-    
-    /* Content Section responsive - WICHTIG: Bilder untereinander */
-    .content-wrapper {
-        flex-direction: column;
-    }
-    
-    .text-box,
-    .image-box {
-        width: 100%;
-    }
-    
-    /* Footer responsive */
-    .footer-content {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-}
-
-/* Zusätzliche Responsive-Anpassungen für Tablets */
-@media (max-width: 900px) and (min-width: 601px) {
-    .content-wrapper {
-        gap: 30px;
-    }
-    
-    .text-box h3 {
-        font-size: 28px;
-    }
-    
-    .hero-content h2 {
-        font-size: 40px;
-    }
+  /* Punkt 4: Bilder aus Punkt 3 untereinander */
+  .section__inner{
+    grid-template-columns: 1fr;
+  }
 }
