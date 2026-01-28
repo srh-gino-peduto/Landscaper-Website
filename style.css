@@ -1,0 +1,264 @@
+/* ===== ALLGEMEINE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1108px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== HEADER (10 Punkte) ===== */
+header {
+    background-color: #2d2d2d; /* Dunkles Grau */
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    width: auto;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #7bc96f;
+}
+
+/* ===== HERO SECTION - Teaserimage (10 Punkte) ===== */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                      url('images/teaser-background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #7bc96f; /* Heller Grünton */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #6ab55f;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #2d2d2d;
+}
+
+/* ===== CONTENT SECTION - Schriftbox und Bild (15 Punkte) ===== */
+.content-section {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.text-box {
+    flex: 1;
+    padding: 30px;
+    background-color: white;
+    border-left: 5px solid #7bc96f;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-box h3 {
+    font-size: 32px;
+    color: #2d2d2d;
+    margin-bottom: 20px;
+}
+
+.text-box p {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 16px;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #7bc96f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.text-link:hover {
+    color: #6ab55f;
+}
+
+.image-box {
+    flex: 1;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== FOOTER (10 Punkte) ===== */
+footer {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info p,
+.footer-contact p {
+    font-size: 14px;
+}
+
+.footer-contact a {
+    color: #7bc96f;
+    text-decoration: none;
+}
+
+/* ===== RESPONSIVE DESIGN (10 Punkte) ===== */
+/* Ab 600px: Bilder untereinander anzeigen */
+@media (max-width: 600px) {
+    /* Header responsive */
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    header nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    /* Hero responsive */
+    .hero {
+        height: 400px;
+    }
+    
+    .hero-content h2 {
+        font-size: 32px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    /* Content Section responsive - WICHTIG: Bilder untereinander */
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .text-box,
+    .image-box {
+        width: 100%;
+    }
+    
+    /* Footer responsive */
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Zusätzliche Responsive-Anpassungen für Tablets */
+@media (max-width: 900px) and (min-width: 601px) {
+    .content-wrapper {
+        gap: 30px;
+    }
+    
+    .text-box h3 {
+        font-size: 28px;
+    }
+    
+    .hero-content h2 {
+        font-size: 40px;
+    }
+}
